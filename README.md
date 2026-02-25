@@ -77,9 +77,6 @@ The system is designed to scale to 2000+ entries while maintaining performance.
 *   Audio ambience layer
 *   Admin dashboard for statement management
 
-## Screenshots
-
-*(Add project screenshots here)*
 
 ## License
 
