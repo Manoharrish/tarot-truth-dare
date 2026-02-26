@@ -45,6 +45,20 @@ document.addEventListener("DOMContentLoaded", function () {
         });
     });
 
+    // ── Safe Navigation (Clean + Professional) ───────────────────
+    const btnTruth = document.getElementById("choose-truth");
+    const btnDare = document.getElementById("choose-dare");
+
+    if (btnTruth && btnDare) {
+        btnTruth.addEventListener("click", () => showRitual("truth"));
+        btnDare.addEventListener("click", () => showRitual("dare"));
+    }
+
+    function showRitual(mode) {
+        console.log("Switching to ritual:", mode);
+        // Page switching logic can be restored here if needed
+    }
+
     resetBtn.addEventListener('click', () => {
         focusLayer.classList.remove('active');
         focusLayer.innerHTML = "";
