@@ -142,19 +142,100 @@ body.dare-theme {
     }
 }
 
-.glass-box {
-    background: transparent;
-    backdrop-filter: none;
-    padding: 80px 100px;
-    border: 1px solid var(--gold-border);
-    border-radius: 4px;
+/* === Hall Layout === */
+
+.hall-container {
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* Floating Panel */
+.hall-panel {
+    padding: 80px 120px;
+    border-radius: 24px;
+    background: rgba(10, 10, 20, 0.75);
+    backdrop-filter: blur(8px);
+    border: 1px solid rgba(212, 175, 55, 0.3);
     box-shadow:
-        inset 0 0 40px var(--gold-glow),
-        0 0 100px rgba(212, 175, 55, 0.1);
+        0 0 60px rgba(212, 175, 55, 0.2),
+        inset 0 0 40px rgba(212, 175, 55, 0.05);
     text-align: center;
+    animation: floatPanel 6s ease-in-out infinite;
+}
+
+/* Gentle floating motion */
+@keyframes floatPanel {
+
+    0%,
+    100% {
+        transform: translateY(0px);
+    }
+
+    50% {
+        transform: translateY(-12px);
+    }
+}
+
+/* Title */
+.hall-title {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(42px, 5vw, 64px);
+    letter-spacing: 6px;
+    color: var(--gold);
+    margin-bottom: 20px;
+    text-shadow: 0 0 20px rgba(212, 175, 55, 0.4);
+}
+
+/* Subtitle */
+.hall-subtitle {
+    font-size: 14px;
+    letter-spacing: 2px;
+    opacity: 0.6;
+    margin-bottom: 50px;
+}
+
+/* Button Layout */
+.hall-buttons {
+    display: flex;
+    gap: 40px;
+    justify-content: center;
+}
+
+/* Ritual Buttons */
+.ritual-btn {
+    padding: 16px 50px;
+    background: none;
+    border: 1px solid var(--gold);
+    color: var(--gold);
+    font-family: 'Playfair Display', serif;
+    letter-spacing: 4px;
+    font-size: 16px;
+    cursor: pointer;
     position: relative;
-    z-index: 20;
-    animation: floatPanel 8s infinite alternate ease-in-out;
+    transition: all 0.4s ease;
+}
+
+/* Hover glow */
+.ritual-btn:hover {
+    background: rgba(212, 175, 55, 0.08);
+    box-shadow: 0 0 30px rgba(212, 175, 55, 0.4);
+    transform: translateY(-3px);
+}
+
+/* Truth tone */
+.ritual-btn.truth:hover {
+    box-shadow: 0 0 40px rgba(70, 120, 255, 0.5);
+    border-color: #4678ff;
+    color: #4678ff;
+}
+
+/* Dare tone */
+.ritual-btn.dare:hover {
+    box-shadow: 0 0 40px rgba(255, 80, 80, 0.5);
+    border-color: #ff5050;
+    color: #ff5050;
 }
 
 /* Floating Symbols Layer */
@@ -192,165 +273,6 @@ body.dare-theme {
 
     100% {
         transform: translate(var(--tx), var(--ty)) rotate(var(--tr));
-        opacity: 0;
-    }
-}
-
-@keyframes floatPanel {
-    0% {
-        transform: translateY(0) rotateX(0);
-    }
-
-    100% {
-        transform: translateY(-25px) rotateX(1deg);
-    }
-}
-
-.box-aura {
-    position: absolute;
-    inset: -20px;
-    background: radial-gradient(circle, var(--gold-glow) 0%, transparent 70%);
-    z-index: -1;
-    filter: blur(30px);
-    opacity: 0.4;
-    animation: auraPulse 5s infinite alternate ease-in-out;
-}
-
-@keyframes auraPulse {
-    from {
-        opacity: 0.2;
-        transform: scale(0.95);
-    }
-
-    to {
-        opacity: 0.5;
-        transform: scale(1.05);
-    }
-}
-
-/* Filigree Corners */
-.corner {
-    position: absolute;
-    width: 60px;
-    height: 60px;
-    border: 2px solid var(--gold);
-    opacity: 0.6;
-}
-
-.corner.tl {
-    top: 20px;
-    left: 20px;
-    border-right: none;
-    border-bottom: none;
-}
-
-.corner.tr {
-    top: 20px;
-    right: 20px;
-    border-left: none;
-    border-bottom: none;
-}
-
-.corner.bl {
-    bottom: 20px;
-    left: 20px;
-    border-right: none;
-    border-top: none;
-}
-
-.corner.br {
-    bottom: 20px;
-    right: 20px;
-    border-left: none;
-    border-top: none;
-}
-
-.mystic-title {
-    font-size: clamp(32px, 6vw, 56px);
-    letter-spacing: 15px;
-    margin-bottom: 10px;
-    color: var(--gold);
-    font-weight: 600;
-    text-transform: uppercase;
-    text-shadow: 0 0 20px var(--gold-glow);
-}
-
-.mystic-subtitle {
-    font-family: 'Inter', sans-serif;
-    font-weight: 300;
-    color: var(--gold);
-    opacity: 0.7;
-    letter-spacing: 6px;
-    text-transform: uppercase;
-    font-size: 11px;
-    margin-bottom: 60px;
-}
-
-.path-choice {
-    display: flex;
-    gap: 50px;
-    justify-content: center;
-}
-
-.ritual-btn {
-    position: relative;
-    padding: 22px 60px;
-    font-family: 'Playfair Display', serif;
-    font-size: 16px;
-    font-weight: 600;
-    letter-spacing: 4px;
-    border: 1px solid var(--gold);
-    background: rgba(0, 0, 0, 0.4);
-    color: #fff;
-    cursor: pointer;
-    overflow: hidden;
-    transition: all 0.5s cubic-bezier(0.2, 1, 0.3, 1);
-}
-
-.ritual-btn::before {
-    content: '';
-    position: absolute;
-    top: 50%;
-    left: -100%;
-    width: 100%;
-    height: 100%;
-    background: linear-gradient(90deg, transparent, rgba(212, 175, 55, 0.2), transparent);
-    transform: skewX(-25deg) translateY(-50%);
-    transition: left 0.8s ease;
-}
-
-.ritual-btn:hover {
-    background: rgba(212, 175, 55, 0.15);
-    border-color: #fff;
-    transform: scale(1.05);
-    box-shadow: 0 0 30px var(--gold-glow);
-}
-
-.ritual-btn:hover::before {
-    left: 100%;
-}
-
-.btn-glow {
-    position: absolute;
-    inset: 0;
-    border: 1px solid var(--gold);
-    opacity: 0;
-    transition: opacity 0.3s ease;
-}
-
-.ritual-btn:hover .btn-glow {
-    opacity: 0.5;
-    animation: btnPulse 2s infinite;
-}
-
-@keyframes btnPulse {
-    0% {
-        transform: scale(1);
-        opacity: 0.5;
-    }
-
-    100% {
-        transform: scale(1.1);
         opacity: 0;
     }
 }
@@ -613,19 +535,18 @@ body.dare-theme {
         }
     }
 
-    .glass-box {
-        padding: 40px 20px;
-        width: 90vw;
+    .hall-panel {
+        padding: 50px 30px;
     }
 
-    .path-choice {
+    .hall-buttons {
         flex-direction: column;
         gap: 20px;
     }
 
     .ritual-btn {
         width: 100%;
-        font-size: 18px;
+        padding: 16px 20px;
     }
 
     .mystic-sigil {
