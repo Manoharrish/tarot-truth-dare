@@ -2,7 +2,7 @@
 
 A luxury tarot-themed Truth & Dare web application featuring a three-card animated spread with a candle-lit ritual interface. Users select Truth or Dare and reveal randomly generated cards with smooth animations and cinematic transitions.
 
-**Live Demo:** [https://manoharrish.github.io/tarot-truth-dare/](https://manoharrish.github.io/tarot-truth-dare/)
+**Live Demo:**https://har1shbuilds.github.io/tarot-truth-dare/
 
 ## Overview
 
