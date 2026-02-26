@@ -155,45 +155,6 @@ body {
     line-height: 1.4;
 }
 
-/* Focus Layer */
-.focus-layer {
-    position: fixed;
-    inset: 0;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    background: rgba(0, 0, 0, 0.85);
-    backdrop-filter: blur(10px);
-    opacity: 0;
-    pointer-events: none;
-    transition: opacity 0.3s ease;
-    z-index: 2000;
-}
-
-.focus-layer.active {
-    opacity: 1;
-    pointer-events: auto;
-}
-
-/* Focused Card */
-.focus-layer .tarot-card {
-    width: min(90vw, 420px);
-    aspect-ratio: 2/3;
-    animation: reveal 0.7s cubic-bezier(0.22, 1, 0.36, 1) forwards;
-}
-
-@keyframes reveal {
-    0% {
-        transform: scale(0.5) rotateY(0deg);
-        opacity: 0;
-    }
-
-    100% {
-        transform: scale(1) rotateY(360deg);
-        opacity: 1;
-    }
-}
-
 /* Reset */
 .btn-reset {
     position: fixed;
@@ -221,14 +182,15 @@ body {
 /* Mobile */
 @media (max-width: 600px) {
     .spread {
-        gap: 15px;
+        gap: 20px;
     }
 
     .tarot-card {
-        width: 28vw;
+        width: 220px;
+        height: 360px;
     }
 
     .ritual-text {
-        font-size: 12px;
+        font-size: 16px;
     }
 }

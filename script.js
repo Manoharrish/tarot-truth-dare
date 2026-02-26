@@ -15,7 +15,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
     cards.forEach(card => {
         card.addEventListener('click', async () => {
-            if (focusLayer.classList.contains('active')) return;
+            if (card.classList.contains('flipped')) return;
 
             // Optional: Dim other cards
             cards.forEach(c => { if (c !== card) c.classList.add('dim'); });
@@ -27,18 +27,12 @@ document.addEventListener("DOMContentLoaded", function () {
                 if (data && data.length > 0) draw = data[0];
             } catch (e) { }
 
-            // Update original card UI before cloning
+            // Update card UI before flipping
             const textEl = card.querySelector('.ritual-text');
             if (textEl && draw) textEl.textContent = draw.text;
 
-            // Clone and Focus
-            const clone = card.cloneNode(true);
-            clone.classList.remove('dim');
-            clone.classList.add('flipped');
-
-            focusLayer.innerHTML = "";
-            focusLayer.appendChild(clone);
-            focusLayer.classList.add('active');
+            // Classic Flip
+            card.classList.add('flipped');
             resetBtn.classList.add('visible');
 
             revealChime.play().catch(() => { });
@@ -72,8 +66,6 @@ document.addEventListener("DOMContentLoaded", function () {
     }
 
     resetBtn.addEventListener('click', () => {
-        focusLayer.classList.remove('active');
-        focusLayer.innerHTML = "";
         resetBtn.classList.remove('visible');
         cards.forEach(card => card.classList.remove('dim', 'flipped'));
         drawWhoosh.play().catch(() => { });
