@@ -70,6 +70,28 @@ document.addEventListener("DOMContentLoaded", function () {
         btnDare.addEventListener("click", () => showRitual("dare"));
     }
 
+    const btnBack = document.getElementById("btnBack");
+    if (btnBack) {
+        btnBack.addEventListener("click", () => {
+            // Reset ritual state
+            cardDrawn = false;
+            cards.forEach(card => {
+                card.classList.remove("flipped", "active", "dim");
+            });
+            resetBtn.classList.remove("visible");
+
+            // Remove theme classes
+            document.body.classList.remove("truth-theme", "dare-theme");
+
+            // Switch pages
+            ritualPage.classList.remove("active");
+            selectionPage.classList.add("active");
+
+            // Play whoosh for transition
+            drawWhoosh.play().catch(() => { });
+        });
+    }
+
     resetBtn.addEventListener('click', () => {
         cardDrawn = false;
         resetBtn.classList.remove('visible');

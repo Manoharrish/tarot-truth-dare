@@ -111,6 +111,28 @@ body.dare-theme {
     pointer-events: none;
 }
 
+.mystic-back {
+    position: absolute;
+    top: 40px;
+    left: 40px;
+    background: none;
+    border: none;
+    color: var(--gold);
+    font-family: 'Playfair Display', serif;
+    font-size: 14px;
+    letter-spacing: 2px;
+    cursor: pointer;
+    opacity: 0.5;
+    transition: all 0.3s ease;
+    z-index: 100;
+}
+
+.mystic-back:hover {
+    opacity: 1;
+    transform: translateX(-5px);
+    text-shadow: 0 0 10px var(--gold-glow);
+}
+
 @keyframes slowRotate {
     from {
         transform: rotate(0deg);
@@ -381,6 +403,12 @@ body.dare-theme {
         min-height: 100vh;
         padding: 60px 0;
         overflow-y: auto;
+    }
+
+    .mystic-back {
+        top: 20px;
+        left: 20px;
+        font-size: 12px;
     }
 
     .spread {
