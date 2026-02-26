@@ -143,19 +143,57 @@ body.dare-theme {
 }
 
 .glass-box {
-    background: rgba(10, 10, 15, 0.7);
-    backdrop-filter: blur(25px);
+    background: transparent;
+    backdrop-filter: none;
     padding: 80px 100px;
     border: 1px solid var(--gold-border);
     border-radius: 4px;
     box-shadow:
-        0 0 60px rgba(0, 0, 0, 0.8),
         inset 0 0 40px var(--gold-glow),
         0 0 100px rgba(212, 175, 55, 0.1);
     text-align: center;
     position: relative;
     z-index: 20;
     animation: floatPanel 8s infinite alternate ease-in-out;
+}
+
+/* Floating Symbols Layer */
+.symbol-layer {
+    position: fixed;
+    inset: 0;
+    z-index: 5;
+    pointer-events: none;
+    overflow: hidden;
+}
+
+.mystic-symbol {
+    position: absolute;
+    color: var(--gold);
+    font-size: 24px;
+    opacity: 0;
+    filter: blur(1px);
+    transition: opacity 1s ease;
+    user-select: none;
+}
+
+@keyframes symbolFloat {
+    0% {
+        transform: translate(0, 0) rotate(0deg);
+        opacity: 0;
+    }
+
+    20% {
+        opacity: 0.4;
+    }
+
+    80% {
+        opacity: 0.4;
+    }
+
+    100% {
+        transform: translate(var(--tx), var(--ty)) rotate(var(--tr));
+        opacity: 0;
+    }
 }
 
 @keyframes floatPanel {

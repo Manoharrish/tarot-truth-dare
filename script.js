@@ -139,4 +139,41 @@ document.addEventListener("DOMContentLoaded", function () {
         }
         draw();
     })();
+
+    // Mystic Floating Symbols
+    (function initMysticSymbols() {
+        const layer = document.getElementById('symbolLayer');
+        if (!layer) return;
+
+        const symbols = ['🌙', '🔮', '🗝', '👁', '⚖️', '🕯', '✨', '🌑', '🕯️'];
+        const count = 15;
+
+        for (let i = 0; i < count; i++) {
+            createSymbol();
+        }
+
+        function createSymbol() {
+            const sym = document.createElement('div');
+            sym.className = 'mystic-symbol';
+            sym.textContent = symbols[Math.floor(Math.random() * symbols.length)];
+
+            const startX = Math.random() * window.innerWidth;
+            const startY = Math.random() * window.innerHeight;
+
+            const tx = (Math.random() - 0.5) * 200;
+            const ty = (Math.random() - 0.5) * 200;
+            const tr = (Math.random() - 0.5) * 360;
+            const duration = 10 + Math.random() * 20;
+            const delay = Math.random() * 20;
+
+            sym.style.left = `${startX}px`;
+            sym.style.top = `${startY}px`;
+            sym.style.setProperty('--tx', `${tx}px`);
+            sym.style.setProperty('--ty', `${ty}px`);
+            sym.style.setProperty('--tr', `${tr}deg`);
+            sym.style.animation = `symbolFloat ${duration}s linear ${delay}s infinite`;
+
+            layer.appendChild(sym);
+        }
+    })();
 });
