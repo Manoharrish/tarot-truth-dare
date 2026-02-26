@@ -98,6 +98,17 @@ body {
     transform-style: preserve-3d;
 }
 
+.tarot-card.active {
+    transform: translateY(-20px) scale(1.05);
+}
+
+.tarot-card.dim {
+    opacity: 0.3;
+    filter: blur(2px);
+    transform: scale(0.9);
+    pointer-events: none;
+}
+
 .tarot-card:hover {
     transform: translateY(-10px);
 }

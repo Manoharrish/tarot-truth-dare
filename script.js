@@ -13,12 +13,12 @@ document.addEventListener("DOMContentLoaded", function () {
     const drawWhoosh = new Audio('sounds/whoosh.mp3');
     const revealChime = new Audio('sounds/chime.mp3');
 
+    let cardDrawn = false;
+
     cards.forEach(card => {
         card.addEventListener('click', async () => {
-            if (card.classList.contains('flipped')) return;
-
-            // Optional: Dim other cards
-            cards.forEach(c => { if (c !== card) c.classList.add('dim'); });
+            if (cardDrawn) return;
+            cardDrawn = true;
 
             // Fetch Data
             let draw;
@@ -31,10 +31,15 @@ document.addEventListener("DOMContentLoaded", function () {
             const textEl = card.querySelector('.ritual-text');
             if (textEl && draw) textEl.textContent = draw.text;
 
-            // Classic Flip
+            // Ritual States
             card.classList.add('flipped');
-            resetBtn.classList.add('visible');
+            card.classList.add('active');
 
+            cards.forEach(c => {
+                if (c !== card) c.classList.add('dim');
+            });
+
+            resetBtn.classList.add('visible');
             revealChime.play().catch(() => { });
         });
     });
@@ -66,8 +71,11 @@ document.addEventListener("DOMContentLoaded", function () {
     }
 
     resetBtn.addEventListener('click', () => {
+        cardDrawn = false;
         resetBtn.classList.remove('visible');
-        cards.forEach(card => card.classList.remove('dim', 'flipped'));
+        cards.forEach(card => {
+            card.classList.remove('dim', 'flipped', 'active');
+        });
         drawWhoosh.play().catch(() => { });
     });
 
