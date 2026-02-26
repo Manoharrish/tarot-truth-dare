@@ -130,7 +130,6 @@ body.dare-theme {
 .mystic-back:hover {
     opacity: 1;
     transform: translateX(-5px);
-    text-shadow: 0 0 10px var(--gold-glow);
 }
 
 @keyframes slowRotate {

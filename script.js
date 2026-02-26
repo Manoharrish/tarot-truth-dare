@@ -75,13 +75,18 @@ document.addEventListener("DOMContentLoaded", function () {
         btnBack.addEventListener("click", () => {
             // Reset ritual state
             cardDrawn = false;
+
             cards.forEach(card => {
-                card.classList.remove("flipped", "active", "dim");
+                card.classList.remove("flipped");
+                card.classList.remove("active");
+                card.classList.remove("dim");
             });
+
             resetBtn.classList.remove("visible");
 
-            // Remove theme classes
-            document.body.classList.remove("truth-theme", "dare-theme");
+            // Remove theme class
+            document.body.classList.remove("truth-theme");
+            document.body.classList.remove("dare-theme");
 
             // Switch pages
             ritualPage.classList.remove("active");
